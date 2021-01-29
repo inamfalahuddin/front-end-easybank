@@ -1,0 +1,33 @@
+@keyframes overlay-in {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    0% {
+        visibility: visible;
+        opacity: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes overlay-out {
+    from {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    90% {
+        visibility: visible;
+        opacity: 0;
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,162 @@
+nav {
+    position: relative;
+    background-color: $White;
+    z-index: 10;
+    width: 100%;
+    transition: .2s ease;
+
+    &.shadow {
+        position: fixed;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.nav__container {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+
+    @include tablet {
+        height: 64px;
+    }
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav__btn {
+    @include tablet {
+        display: none;
+    }
+}
+
+.nav__menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 12px;
+    cursor: pointer;
+    z-index: 6;
+
+
+    @include tablet {
+        display: flex;
+    }
+
+    >span {
+        width: 100%;
+        height: 2px;
+        background-color: $Dark__Blue;
+        transform-origin: 5px 1px;
+        transition: all .2s ease-in;
+    }
+
+    &.open {
+        >span:first-child {
+            transform: rotate(45deg);
+        }
+
+        >span:nth-child(2) {
+            opacity: 0;
+        }
+
+        >span:last-child {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.nav__links {
+    display: flex;
+    position: relative;
+    z-index: 3;
+
+    @include tablet {
+        display: flex;
+        position: fixed;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 265px;
+        top: 64px;
+        left: 0;
+        right: 0;
+        border-radius: 7px;
+        background-color: $White;
+        padding: 0;
+        transform: translateY(-30rem);
+        transition: all .4s ease-in-out;
+        z-index: -1;
+
+        &.open {
+            transform: translateY(15px);
+        }
+    }
+
+    li {
+        margin: 0 1.5vmin;
+
+        a {
+            color: $Grayish__Blue;
+            transition: all .3s ease;
+
+            @include tablet {
+                color: $Dark__Blue;
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: relative;
+                height: 3px;
+                bottom: -29px;
+                background: linear-gradient(to right, $Lime__Green, $Bright__Cyan);
+                opacity: 1;
+                transform: scaleX(0);
+                transform-origin: 50% 50%;
+                transition: all .3s ease;
+
+                @include tablet {
+                    bottom: 0;
+                }
+            }
+
+            &:hover {
+                color: $Dark__Blue;
+
+                &::after {
+                    width: 100%;
+                    opacity: 1;
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+}
+
+.nav__background__overlay {
+    @include tablet {
+        z-index: 3;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+
+        &.overlay-in {
+            background: linear-gradient(to bottom, $Dark__Blue, transparent);
+            animation: overlay-in .2s ease-in-out forwards;
+        }
+
+        &.overlay-out {
+            animation: overlay-out .4s ease-in-out forwards;
+        }
+    }
+}
